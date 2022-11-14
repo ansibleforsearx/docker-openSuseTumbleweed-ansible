@@ -22,7 +22,6 @@ RUN zypper -qn install \
     python3-pip \
     sudo \
     which \
-    python3-zypper \
   && zypper clean
 
 # Install Ansible via Pip.
