@@ -1,5 +1,5 @@
-FROM fedora:35
-LABEL maintainer="Jeff Geerling"
+FROM opensuse/tumbleweed
+LABEL maintainer="Searx Guy"
 ENV container=docker
 
 ENV pip_packages "ansible"
