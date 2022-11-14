@@ -4,10 +4,10 @@ ENV container=docker
 
 ENV pip_packages "ansible"
 
-RUN dnf -y update && dnf clean all
+RUN zypper -q update && zypper clean all
 
 # Enable systemd.
-RUN dnf -y install systemd && dnf clean all && \
+RUN zypper -q install systemd && zypper clean all && \
   (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
   rm -f /lib/systemd/system/multi-user.target.wants/*;\
   rm -f /etc/systemd/system/*.wants/*;\
@@ -18,13 +18,13 @@ RUN dnf -y install systemd && dnf clean all && \
   rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 # Install pip and other requirements.
-RUN dnf makecache \
-  && dnf -y install \
+RUN zypper makecache \
+  && zypper -q install \
     python3-pip \
     sudo \
     which \
-    python3-dnf \
-  && dnf clean all
+    python3-zypper \
+  && zypper clean all
 
 # Install Ansible via Pip.
 RUN pip3 install $pip_packages
