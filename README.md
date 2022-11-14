@@ -1,8 +1,8 @@
-# openSuse Tumbeweed Ansible Test Image
+# openSuse Tumbleweed Ansible Test Image
 
 [![Build](https://github.com/ansibleforsearx/docker-openSuseTumbleweed-ansible/actions/workflows/build.yml/badge.svg)](https://github.com/ansibleforsearx/docker-openSuseTumbleweed-ansible/actions/workflows/build.yml)
 
-openSuse Tumbeweed Docker container for Ansible playbook and role testing.
+openSuse Tumbleweed Docker container for Ansible playbook and role testing.
 
 ## Tags
 
@@ -16,15 +16,15 @@ This image is built on Docker Hub automatically any time the upstream OS contain
 
   1. [Install Docker](https://docs.docker.com/engine/installation/).
   2. `cd` into this directory.
-  3. Run `docker build -t openSuseTumbeweed-ansible .`
+  3. Run `docker build -t opensusetumbleweed-ansible .`
 
 > Note: Switch between `master` and `testing` depending on whether you want the extra testing tools present in the resulting image.
 
 ## How to Use
 
   1. [Install Docker](https://docs.docker.com/engine/installation/).
-  2. Pull this image from Docker Hub: `docker pull searxguy/docker-openSuseTumbeweed-ansible:latest` (or use the image you built earlier, e.g. `openSuseTumbeweed-ansible:latest`).
-  3. Run a container from the image: `docker run --detach --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro searxguy/docker-openSuseTumbeweed-ansible:latest` (to test my Ansible roles, I add in a volume mounted from the current working directory with ``--volume=`pwd`:/etc/ansible/roles/role_under_test:ro``).
+  2. Pull this image from Docker Hub: `docker pull searxguy/docker-opensusetumbleweed-ansible:latest` (or use the image you built earlier, e.g. `opensusetumbleweed-ansible:latest`).
+  3. Run a container from the image: `docker run --detach --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro searxguy/docker-opensusetumbleweed-ansible:latest` (to test my Ansible roles, I add in a volume mounted from the current working directory with ``--volume=`pwd`:/etc/ansible/roles/role_under_test:ro``).
   4. Use Ansible inside the container:
     a. `docker exec --tty [container_id] env TERM=xterm ansible --version`
     b. `docker exec --tty [container_id] env TERM=xterm ansible-playbook /path/to/ansible/playbook.yml --syntax-check`
