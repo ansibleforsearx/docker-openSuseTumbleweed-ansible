@@ -18,7 +18,7 @@ RUN zypper -q install systemd && zypper clean && \
   # rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 # Install pip and other requirements.
-RUN zypper -q install \
+RUN zypper -qn install \
     python3-pip \
     sudo \
     which \
