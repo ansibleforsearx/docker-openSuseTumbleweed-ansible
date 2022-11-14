@@ -19,7 +19,8 @@ RUN zypper -q install systemd && zypper clean && \
 
 # Install pip and other requirements.
 RUN zypper -qn install \
-    python3-pip \
+    python310 \
+    python310-pip \
     sudo \
     which \
   && zypper clean
