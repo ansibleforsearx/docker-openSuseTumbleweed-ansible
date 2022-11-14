@@ -7,7 +7,8 @@ ENV pip_packages "ansible"
 RUN zypper -q update && zypper clean
 
 # Enable systemd.
-RUN zypper -q install systemd && zypper clean && \
+RUN zypper -q install systemd systemd-default-settings systemd-default-settings-branding-openSUSE \
+    systemd-presets-branding-openSUSE systemd-presets-common-SUSE && zypper clean && \
   (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
   rm -f /lib/systemd/system/multi-user.target.wants/*;\
   rm -f /etc/systemd/system/*.wants/*;\
@@ -23,6 +24,7 @@ RUN zypper -qn install \
     python310-pip \
     sudo \
     which \
+    cloud-init \
   && zypper clean
 
 # Install Ansible via Pip.
